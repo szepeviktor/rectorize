@@ -1,0 +1,35 @@
+on: 
+  workflow_dispatch:
+    inputs:
+      gitUrl:
+        description: "Git URL"
+        required: true
+      processOptions:
+        description: "Command line options"
+        required: true
+        default: "src/"
+
+jobs:
+  rector:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Set default PHP version"
+        run: "sudo update-alternatives --set php /usr/bin/php8.0"
+
+      - name: "Checkout code"
+        uses: "actions/checkout@v2"
+
+      - name: "Clone and rectify project"
+        run: |
+          git clone "${{ github.event.inputs.gitUrl }}" build/
+          cd build/
+          composer update --no-interaction --ignore-platform-reqs --prefer-dist
+          composer require --no-interaction --ignore-platform-reqs --dev rector/rector-prefixed
+          vendor/bin/rector process ${{ github.event.inputs.processOptions }}
+
+      - name: "Upload rectified source code"
+        uses: "actions/upload-artifact@v2"
+        with:
+          name: "results"
+          path: "build"
+          retention-days: 1
