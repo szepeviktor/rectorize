@@ -1,3 +1,4 @@
+name: "Rectorize"
 on: 
   workflow_dispatch:
     inputs:
