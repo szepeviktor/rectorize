@@ -25,7 +25,7 @@ jobs:
           cd build/
           composer update --no-interaction --ignore-platform-reqs --prefer-dist
           composer require --no-interaction --ignore-platform-reqs --dev rector/rector-prefixed
-          vendor/bin/rector process ${{ github.event.inputs.processOptions }}
+          vendor/bin/rector process --config=../rector.php ${{ github.event.inputs.processOptions }}
 
       - name: "Upload rectified source code"
         uses: "actions/upload-artifact@v2"
