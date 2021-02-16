@@ -12,6 +12,7 @@ on:
 
 jobs:
   rector:
+    name: "Rector"
     runs-on: ubuntu-latest
     steps:
       - name: "Set default PHP version"
@@ -27,10 +28,11 @@ jobs:
           composer update --no-interaction --ignore-platform-reqs --prefer-dist
           composer require --no-interaction --ignore-platform-reqs --dev rector/rector-prefixed
           vendor/bin/rector process --config=../rector.php ${{ github.event.inputs.processOptions }}
+          tar -cf build.tar .
 
       - name: "Upload rectified source code"
         uses: "actions/upload-artifact@v2"
         with:
           name: "results"
-          path: "build"
+          path: "build/build.tar"
           retention-days: 1
