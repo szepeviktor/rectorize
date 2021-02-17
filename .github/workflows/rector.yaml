@@ -8,6 +8,7 @@ on:
       phpVersion:
         description: "Target PHP version"
         required: false
+        default: "7.4"
       processOptions:
         description: "Command line options"
         required: true
