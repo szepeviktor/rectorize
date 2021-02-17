@@ -5,6 +5,9 @@ on:
       gitUrl:
         description: "Git URL"
         required: true
+      phpVersion:
+        description: "Target PHP version"
+        required: false
       processOptions:
         description: "Command line options"
         required: true
@@ -20,6 +23,26 @@ jobs:
 
       - name: "Checkout code"
         uses: "actions/checkout@v2"
+
+      - name: "Set target PHP version to 7.3"
+        if: "github.event.inputs.phpVersion == '7.3'"
+        run: "sed -i -e 's#//PHP73 ##' rector.php"
+
+      - name: "Set target PHP version to 7.2"
+        if: "github.event.inputs.phpVersion == '7.2'"
+        run: "sed -i -e 's#//PHP72 ##' rector.php"
+
+      - name: "Set target PHP version to 7.1"
+        if: "github.event.inputs.phpVersion == '7.1'"
+        run: "sed -i -e 's#//PHP71 ##' rector.php"
+
+      - name: "Set target PHP version to 7.0"
+        if: "github.event.inputs.phpVersion == '7.0'"
+        run: "sed -i -e 's#//PHP70 ##' rector.php"
+
+      - name: "Set target PHP version to 5.6"
+        if: "github.event.inputs.phpVersion == '5.6'"
+        run: "sed -i -e 's#//PHP56 ##' rector.php"
 
       - name: "Clone and rectify project"
         run: |
