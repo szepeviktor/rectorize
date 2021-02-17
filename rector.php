@@ -9,24 +9,24 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters->set(Option::SETS, [
         DowngradeSetList::PHP_80,
 
-        //PHP7.3 DowngradeSetList::PHP_74,
+        //PHP73 DowngradeSetList::PHP_74,
 
-        //PHP7.2 DowngradeSetList::PHP_74,
-        //PHP7.2 DowngradeSetList::PHP_73,
+        //PHP72 DowngradeSetList::PHP_74,
+        //PHP72 DowngradeSetList::PHP_73,
 
-        //PHP7.1 DowngradeSetList::PHP_74,
-        //PHP7.1 DowngradeSetList::PHP_73,
-        //PHP7.1 DowngradeSetList::PHP_72,
+        //PHP71 DowngradeSetList::PHP_74,
+        //PHP71 DowngradeSetList::PHP_73,
+        //PHP71 DowngradeSetList::PHP_72,
 
-        //PHP7.0 DowngradeSetList::PHP_74,
-        //PHP7.0 DowngradeSetList::PHP_73,
-        //PHP7.0 DowngradeSetList::PHP_72,
-        //PHP7.0 DowngradeSetList::PHP_71,
+        //PHP70 DowngradeSetList::PHP_74,
+        //PHP70 DowngradeSetList::PHP_73,
+        //PHP70 DowngradeSetList::PHP_72,
+        //PHP70 DowngradeSetList::PHP_71,
 
-        //PHP5.6 DowngradeSetList::PHP_74,
-        //PHP5.6 DowngradeSetList::PHP_73,
-        //PHP5.6 DowngradeSetList::PHP_72,
-        //PHP5.6 DowngradeSetList::PHP_71,
-        //PHP5.6 DowngradeSetList::PHP_70,
+        //PHP56 DowngradeSetList::PHP_74,
+        //PHP56 DowngradeSetList::PHP_73,
+        //PHP56 DowngradeSetList::PHP_72,
+        //PHP56 DowngradeSetList::PHP_71,
+        //PHP56 DowngradeSetList::PHP_70,
     ]);
 };
