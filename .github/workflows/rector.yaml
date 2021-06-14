@@ -30,43 +30,43 @@ jobs:
           git clone "${{ github.event.inputs.gitUrl }}" build/
           cd build/
           composer update --no-interaction --ignore-platform-reqs --prefer-dist
-          composer require --no-interaction --ignore-platform-reqs symfony/polyfill-php80
-          composer require --no-interaction --ignore-platform-reqs --dev rector/rector-prefixed
+          composer require --no-interaction --ignore-platform-reqs --no-scripts symfony/polyfill-php80
+          composer require --no-interaction --ignore-platform-reqs --no-scripts --dev rector/rector-prefixed
 
       - name: "Set target PHP version to 7.3"
         if: "github.event.inputs.phpVersion == '7.3'"
         run: |
           sed -i -e 's#//PHP73 ##' rector.php
           cd build/
-          composer require --no-interaction --ignore-platform-reqs symfony/polyfill-php74
+          composer require --no-interaction --ignore-platform-reqs --no-scripts symfony/polyfill-php74
 
       - name: "Set target PHP version to 7.2"
         if: "github.event.inputs.phpVersion == '7.2'"
         run: |
           sed -i -e 's#//PHP72 ##' rector.php
           cd build/
-          composer require --no-interaction --ignore-platform-reqs symfony/polyfill-php74 symfony/polyfill-php73
+          composer require --no-interaction --ignore-platform-reqs --no-scripts symfony/polyfill-php74 symfony/polyfill-php73
 
       - name: "Set target PHP version to 7.1"
         if: "github.event.inputs.phpVersion == '7.1'"
         run: |
           sed -i -e 's#//PHP71 ##' rector.php
           cd build/
-          composer require --no-interaction --ignore-platform-reqs symfony/polyfill-php74 symfony/polyfill-php73 symfony/polyfill-php72
+          composer require --no-interaction --ignore-platform-reqs --no-scripts symfony/polyfill-php74 symfony/polyfill-php73 symfony/polyfill-php72
 
       - name: "Set target PHP version to 7.0"
         if: "github.event.inputs.phpVersion == '7.0'"
         run: |
           sed -i -e 's#//PHP70 ##' rector.php
           cd build/
-          composer require --no-interaction --ignore-platform-reqs symfony/polyfill-php74 symfony/polyfill-php73 symfony/polyfill-php72 symfony/polyfill-php71
+          composer require --no-interaction --ignore-platform-reqs --no-scripts symfony/polyfill-php74 symfony/polyfill-php73 symfony/polyfill-php72 symfony/polyfill-php71
 
       - name: "Set target PHP version to 5.6"
         if: "github.event.inputs.phpVersion == '5.6'"
         run: |
           sed -i -e 's#//PHP56 ##' rector.php
           cd build/
-          composer require --no-interaction --ignore-platform-reqs symfony/polyfill-php74 symfony/polyfill-php73 symfony/polyfill-php72 symfony/polyfill-php71 symfony/polyfill-php70
+          composer require --no-interaction --ignore-platform-reqs --no-scripts symfony/polyfill-php74 symfony/polyfill-php73 symfony/polyfill-php72 symfony/polyfill-php71 symfony/polyfill-php70
 
       - name: "Rectify project"
         run: |
